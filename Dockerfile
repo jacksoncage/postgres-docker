@@ -29,6 +29,6 @@ ADD pg_hba.conf     /etc/postgresql/9.2/main/
 ADD pg_ident.conf   /etc/postgresql/9.2/main/
 ADD postgresql.conf /etc/postgresql/9.2/main/
 
-ADD start /start
-RUN chmod 0755 /start
+ADD start /start.sh
+RUN chmod 0755 /start.sh
 CMD ["bash", "start.sh"]
