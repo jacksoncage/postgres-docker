@@ -1,8 +1,5 @@
-FROM 		base:ubuntu-quantal
+FROM ubuntu:14.04
 MAINTAINER 	Love Nyberg <love.nyberg@lovemusic.se>
-
-# Update apt sources
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ quantal main universe multiverse" > /etc/apt/sources.list
 
 # Update the package repository
 RUN apt-get update; apt-get upgrade -y; apt-get install locales
@@ -18,8 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl psmisc
 EXPOSE 5432
 
 # Install Dockyard
-RUN curl -o /usr/local/bin/dockyard https://raw.github.com/dynport/dockyard/master/dockyard
-RUN chmod 0755 /usr/local/bin/dockyard
+RUN curl https://raw.github.com/dynport/dockyard/master/dockyard -o /usr/local/bin/dockyard && chmod 0755 /usr/local/bin/dockyard
 
 RUN dockyard install postgresql 9.2.4
 
